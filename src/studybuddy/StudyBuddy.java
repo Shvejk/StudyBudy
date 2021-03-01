@@ -1,4 +1,6 @@
 package studybuddy;
+import studybuddy.textui.TextUI;
+import studybuddy.domain.Topic;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
@@ -28,7 +30,5 @@ public class StudyBuddy {
         TextUI ui = new TextUI(scanner, questionDatabase);
         ui.start();
         
-        
-    }
-    
+        }
 }

@@ -1,6 +1,6 @@
-package studybuddy;
+package studybuddy.domain;
 
-public class Question {
+public class Question implements Listable {
 
     String question;
     String answer;
@@ -20,5 +20,10 @@ public class Question {
 
     public String toString() {
         return "Q: " + this.question + " A: " + this.answer;
+    }
+
+    @Override
+    public void display() {
+        this.toString();
     }
 }

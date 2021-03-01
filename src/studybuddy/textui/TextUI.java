@@ -1,7 +1,11 @@
-package studybuddy;
+package studybuddy.textui;
 
+import studybuddy.domain.Topic;
+import studybuddy.domain.Question;
 import java.util.ArrayList;
 import java.util.Scanner;
+import studybuddy.QuestionRandomizer;
+import studybuddy.domain.Listable;
 
 public class TextUI {
 
@@ -75,8 +79,8 @@ public class TextUI {
         if (questionDatabase.getTopicQuestions().isEmpty()) {
             System.out.println("List is empty!");
         } else {
-            ArrayList<Question> randomList = QuestionRandomizer.shuffle(questionDatabase.getTopicQuestions());
-            for (Question q : randomList) {
+            ArrayList<Listable> randomList = QuestionRandomizer.shuffle(questionDatabase.getTopicQuestions());
+            for (Listable q : randomList) {
                 System.out.println(q);
             }
         }

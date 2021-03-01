@@ -6,9 +6,9 @@ import java.util.Scanner;
 public class TextUI {
 
     Scanner scanner;
-    QuestionDatabase questionDatabase;
+    Topic questionDatabase;
 
-    public TextUI(Scanner scanner, QuestionDatabase questionDatabase) {
+    public TextUI(Scanner scanner, Topic questionDatabase) {
         this.scanner = scanner;
         this.questionDatabase = questionDatabase;
     }
@@ -19,6 +19,7 @@ public class TextUI {
             String command = readString(commandList());
 
             if ("x".equals(command)) {
+                goodbyeMessage();
                 break;
             }
 
@@ -39,25 +40,29 @@ public class TextUI {
 
         }
     }
+    
+    private void goodbyeMessage() {
+        System.out.println("\nThank you for playing!!\n");
+    }
 
     private String commandList() {
-        return "Please enter a valid command:\n\n"
+        return "Please choose a valid command:\n\n"
                 + "[1] Enter question\n"
                 + "[2] List questions\n"
                 + "[3] Randomize question list\n"
-                + "[x] Exits program\n\n";
+                + "[x] Exits program\n\n>";
     }
 
     private void addQuestion() {
         String question = readString("\nEnter a question: ");
         String answer = readString("Enter the answer: ");
-        questionDatabase.addQuestion(question, answer);
+        questionDatabase.addQuestionToTopic(question, answer);
         System.out.println("");
     }
 
     private void printQuestions() {
         System.out.println("");
-        questionDatabase.printQuestions();
+        questionDatabase.printTopicQuestions();
         System.out.println("");
     }
 
@@ -67,14 +72,15 @@ public class TextUI {
 
     private void printRandomList() {
         System.out.println("");
-        if (questionDatabase.getQuestions().isEmpty()) {
-            System.out.println("List is empty!\n");
+        if (questionDatabase.getTopicQuestions().isEmpty()) {
+            System.out.println("List is empty!");
         } else {
-            ArrayList<Question> randomList = QuestionRandomizer.shuffle(questionDatabase.getQuestions());
+            ArrayList<Question> randomList = QuestionRandomizer.shuffle(questionDatabase.getTopicQuestions());
             for (Question q : randomList) {
                 System.out.println(q);
             }
         }
+        System.out.println("");
     }
 
     public String readString(String prompt) {

@@ -24,7 +24,7 @@ public class StudyBuddy {
         */
         
         Scanner scanner = new Scanner(System.in);
-        QuestionDatabase questionDatabase = new QuestionDatabase();
+        Topic questionDatabase = new Topic();
         TextUI ui = new TextUI(scanner, questionDatabase);
         ui.start();
         
